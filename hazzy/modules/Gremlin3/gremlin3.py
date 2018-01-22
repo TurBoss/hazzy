@@ -44,11 +44,11 @@ class Gremlin3(Gtk.Box):
         gl_area = Gtk.GLArea()
         gl_area.connect('render', self.area_render)
         gl_area.connect('realize', self.area_realize)
-        #gl_area.connect('create-context', self.area_context)
+        # gl_area.connect('create-context', self.area_context)
 
         self.pack_start(gl_area, True, True, 0)
 
-    def area_realize (self, gl_area):
+    def area_realize(self, gl_area):
         error = gl_area.get_error()
         if error != None:
             print "your graphics card is probably too old : ", error
@@ -58,14 +58,14 @@ class Gremlin3(Gtk.Box):
     def area_context(self, gl_area):
         # not needed except for special instances, read the docs
         c = gl_area.get_context()
-        print c , "context"
+        print c, "context"
         return c
 
     def area_render(self, area, context):
-        #print gl_area
-        #print gl_context
-        glClearColor (0.5, 0.5, 0.5, 1.0)
-        glClear (GL_COLOR_BUFFER_BIT)
+        # print gl_area
+        # print gl_context
+        glClearColor(0.5, 0.5, 0.5, 1.0)
+        glClear(GL_COLOR_BUFFER_BIT)
         glFlush()
         print "rendering... done"
         return True
