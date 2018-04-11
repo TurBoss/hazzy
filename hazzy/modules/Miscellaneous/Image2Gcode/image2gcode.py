@@ -37,8 +37,6 @@ import rs274.options
 from math import *
 import operator
 
-epsilon = 1e-5
-
 
 class Tools:
 
@@ -260,6 +258,8 @@ class Converter:
                  output_file,
                  callback):
 
+        self.epsilon = 1e-5
+
         self.tools = Tools()
 
         self.image = image
@@ -365,7 +365,7 @@ class Converter:
                 self.one_pass()
                 r = r - self.roughing_delta
 
-            if r < m + epsilon:
+            if r < m + self.epsilon:
                 self.rd = m
                 self.one_pass()
 
